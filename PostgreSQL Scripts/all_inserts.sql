@@ -1,0 +1,12 @@
+\i customer.sql
+\i customer_contact.sql
+\i supplier.sql
+\i supplier_contact.sql
+\i product.sql
+\i cart.sql
+\i includes.sql
+\i shipper.sql
+\i _order.sql
+\i is_a.sql
+\i payment.sql
+\i shipper_contact.sql

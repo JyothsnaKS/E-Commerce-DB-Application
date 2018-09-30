@@ -1,0 +1,14 @@
+insert into net_banking VALUES
+('PAY_001','O_001','HDFC370216'),
+('PAY_002','O_002','HDFC398916'),
+('PAY_003','O_003','HDFC322216');
+
+insert into credit VALUES
+('PAY_004','O_004',1000700020331564,'05/22',434),
+('PAY_005','O_005',1000700020321039,'18/17',665),
+('PAY_006','O_006',1000700020352184,'09/18',981);
+
+insert into cash VALUES
+('PAY_007','O_007',TRUE),
+('PAY_008','O_008',FALSE),
+('PAY_009','O_009',true);

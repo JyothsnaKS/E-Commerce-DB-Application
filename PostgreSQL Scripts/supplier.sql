@@ -1,0 +1,22 @@
+insert into supplier values ('S_001','Apple','Heidi Logan'),
+('S_002','Panasonic','Maria Ross'),
+('S_003','Sony','Marty Andrews'),
+('S_004','Nikon','Doug Cox'),
+('S_005','Transcend','Casey Gill'),
+('S_006','Bose','Desiree Goodwin'),
+('S_007','Canon','Lila Blair'),
+('S_008','Samsung','Lula Dennis'),
+('S_009','Linksys','Rafael Chambers'),
+('S_010','Skullcandy','Drew Harmon'),
+('S_011','Nintendo','Virgil Terry'),
+('S_012','LG','Jon Hughes'),
+('S_013','LogiTech','Betsy Hayes'),
+('S_014','Sennheiser','Lindsay Martinez'),
+('S_015','Motorola','Dolores Pearson'),
+('S_016','Haier','Frederick Collier'),
+('S_017','Pioneer','Scott Lawrence'),
+('S_018','Microsoft','Gilberto Fox'),
+('S_019','Whirpool','Janis Jackson'),
+('S_020','Netgear','Christie Francis');
+
+

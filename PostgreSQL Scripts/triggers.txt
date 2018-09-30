@@ -1,0 +1,73 @@
+EXAMPLE FOR TRIGGER
+
+^o 
+Enter
+^x
+
+\ef increment
+
+CREATE OR REPLACE FUNCTION public.increment()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+        BEGIN
+         insert into temp values (old.end_min);
+        return new;
+END;
+$function$
+
+\g
+
+create trigger trig before update on time_slot for each row execute procedure increment();
+
+update time_slot set end_min=50 where end_min=35;
+
+select * from temp;
+
+drop function increment();
+
+drop trigger trig on time_slot;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE OR REPLACE FUNCTION public.update_price()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+        BEGIN
+		update _order o set total_price=(select c.total_price from cart c where c.cart_id=o.cart_id);
+	insert into is_a (select new.order_id,i.product_id from includes i where i.cart_id=new.cart_id);	
+		delete from includes i where i.cart_id=old.cart_id;
+		update cart c set total_price=0 where c.cart_id=new.cart_id;
+		update products set stock=stock-1 where product_id in (select i.product_id from is_a i where i.order_id=new.order_id);
+        return new;
+END;
+$function$
+
+----------------------------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION public.update_cart_price()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+        BEGIN
+UPDATE cart c SET total_price = (SELECT sum(price) from (includes natural join products) a group by a.cart_id having a.cart_id = c.cart_id);
+return new;
+END;
+$function$
+
+create trigger price after insert on includes for each row execute procedure update_cart_price();
+
+create trigger price after insert on _order for each row execute procedure update_price();
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
